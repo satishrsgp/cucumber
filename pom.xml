@@ -28,6 +28,19 @@
             <version>7.21.1</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-testng -->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-testng</artifactId>
+            <version>7.21.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.11.0</version>
+            <scope>test</scope>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-core -->
         <dependency>
             <groupId>io.cucumber</groupId>
@@ -46,38 +59,13 @@
             <artifactId>extentreports-cucumber7-adapter</artifactId>
             <version>1.14.0</version>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.13.1</version>
-            <scope>test</scope>
-        </dependency>
         <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>4.30.0</version>
         </dependency>
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
 
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-params</artifactId>
-            <version>5.7.0</version>
-            <scope>test</scope>
-        </dependency>
         <!-- SLF4J API -->
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
@@ -109,6 +97,12 @@
             <artifactId>maven-resources-plugin</artifactId>
             <version>3.3.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.apache.maven.plugins/maven-surefire-plugin -->
+        <dependency>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>3.5.3</version>
+        </dependency>
 
     </dependencies>
 
@@ -125,13 +119,19 @@
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>3.5.2</version>
                     <configuration>
-                        <testSourceDirectory>.src/test/java/org/abc/cucumberRunner</testSourceDirectory>
-                        <includes>
-                            <include>**\cucumberRunner.java</include>
-                        </includes>
+                       <!-- <testSourceDirectory>.src/test/java/org/abc/cucumberRunner</testSourceDirectory>
+                        <includes>**\cucumberRunner.java</includes>
                         <parallel>methods</parallel>
-                        <threadCount>4</threadCount>
-                        <useUnlimitedThreads>true</useUnlimitedThreads>
+                        <threadCount>2</threadCount>-->
+                         <suiteXmlFiles>
+                             <suiteXmlFile>testng.xml</suiteXmlFile>
+                         </suiteXmlFiles>
+                         <properties>
+                             <property>
+                                 <name>dataproviderthreadcount</name>
+                                 <value>2</value>
+                             </property>
+                         </properties>
                     </configuration>
                 </plugin>
             </plugins>

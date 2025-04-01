@@ -27,6 +27,8 @@
 
         <testViewChartLocation>bottom</testViewChartLocation>
         <!-- custom javascript -->
+        <offlineMode>true</offlineMode>
+        <thumbnailForBase64>true</thumbnailForBase64>
 
         <scripts>
 

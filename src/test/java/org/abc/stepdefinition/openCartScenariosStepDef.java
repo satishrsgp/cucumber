@@ -16,7 +16,7 @@ public class openCartScenariosStepDef {
     @Given("the user is on the OpenCart homepage")
     public void givenTheUserIsOnHomePage() {
         LogUtil.info("Opening the application...");
-        driver.get(ConfigReader.getBaseUrl());
+        driver.get(hooks.getConfigValue("baseURL"));
     }
 
     @When("the user clicks on the {string} category")

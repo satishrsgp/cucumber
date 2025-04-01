@@ -4,16 +4,23 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import org.abc.driverFactory.driverFactory;
+import org.abc.utils.ConfigReader;
 import org.abc.utils.LogUtil;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 public class hooks {
-
+    private static ConfigReader configReader;
     @Before
     public void setUp(Scenario scenario) {
+        String environement = System.getProperty("environment","dev");
+        configReader = new ConfigReader("src/test/resources/config-"+environement+".properties");
         LogUtil.info("Starting scenario: " + scenario.getName());
         driverFactory.setUpDriver();
+    }
+
+    public static String getConfigValue(String key) {
+        return configReader.getProperty(key);
     }
 
 
